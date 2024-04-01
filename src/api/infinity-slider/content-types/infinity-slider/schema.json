@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "infinity_sliders",
+  "info": {
+    "singularName": "infinity-slider",
+    "pluralName": "infinity-sliders",
+    "displayName": "Infinity_slider"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}
