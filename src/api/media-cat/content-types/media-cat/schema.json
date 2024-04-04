@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_cats",
+  "info": {
+    "singularName": "media-cat",
+    "pluralName": "media-cats",
+    "displayName": "Media_cat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "medias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::media.media",
+      "mappedBy": "media_cat"
+    }
+  }
+}

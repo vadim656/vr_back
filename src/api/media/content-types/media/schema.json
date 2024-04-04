@@ -4,7 +4,8 @@
   "info": {
     "singularName": "media",
     "pluralName": "medias",
-    "displayName": "Media"
+    "displayName": "Медиа",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,14 +16,21 @@
       "type": "string"
     },
     "poster": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "media_cat": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::media-cat.media-cat",
+      "inversedBy": "medias"
     }
   }
 }

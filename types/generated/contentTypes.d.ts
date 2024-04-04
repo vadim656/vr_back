@@ -849,7 +849,8 @@ export interface ApiMediaMedia extends Schema.CollectionType {
   info: {
     singularName: 'media';
     pluralName: 'medias';
-    displayName: 'Media';
+    displayName: '\u041C\u0435\u0434\u0438\u0430';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -857,6 +858,11 @@ export interface ApiMediaMedia extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     poster: Attribute.Media;
+    media_cat: Attribute.Relation<
+      'api::media.media',
+      'manyToOne',
+      'api::media-cat.media-cat'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -875,30 +881,35 @@ export interface ApiMediaMedia extends Schema.CollectionType {
   };
 }
 
-export interface ApiMediaCategoryMediaCategory extends Schema.CollectionType {
-  collectionName: 'media_categories';
+export interface ApiMediaCatMediaCat extends Schema.CollectionType {
+  collectionName: 'media_cats';
   info: {
-    singularName: 'media-category';
-    pluralName: 'media-categories';
-    displayName: 'media_category';
+    singularName: 'media-cat';
+    pluralName: 'media-cats';
+    displayName: 'Media_cat';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    uuid: Attribute.UID;
+    Name: Attribute.String;
+    medias: Attribute.Relation<
+      'api::media-cat.media-cat',
+      'oneToMany',
+      'api::media.media'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::media-category.media-category',
+      'api::media-cat.media-cat',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::media-category.media-category',
+      'api::media-cat.media-cat',
       'oneToOne',
       'admin::user'
     > &
@@ -911,7 +922,7 @@ export interface ApiProjectProject extends Schema.CollectionType {
   info: {
     singularName: 'project';
     pluralName: 'projects';
-    displayName: 'project';
+    displayName: '\u041F\u0440\u043E\u0435\u043A\u0442\u044B';
     description: '';
   };
   options: {
@@ -987,7 +998,8 @@ export interface ApiReviewReview extends Schema.CollectionType {
   info: {
     singularName: 'review';
     pluralName: 'reviews';
-    displayName: 'review';
+    displayName: '\u041E\u0442\u0437\u044B\u0432\u044B';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1103,7 +1115,7 @@ declare module '@strapi/types' {
       'api::industry.industry': ApiIndustryIndustry;
       'api::infinity-slider.infinity-slider': ApiInfinitySliderInfinitySlider;
       'api::media.media': ApiMediaMedia;
-      'api::media-category.media-category': ApiMediaCategoryMediaCategory;
+      'api::media-cat.media-cat': ApiMediaCatMediaCat;
       'api::project.project': ApiProjectProject;
       'api::project-tag.project-tag': ApiProjectTagProjectTag;
       'api::review.review': ApiReviewReview;
